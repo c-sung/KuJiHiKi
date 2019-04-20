@@ -1,7 +1,7 @@
 package tw.NUTN.KuJiHiKi.obj;
 
 public class Member {
-    public String writer_name, writer_stuNum, name, stu_num, content, security_code, phone_number;
+    private String writer_name, writer_stuNum, name, stu_num, content, security_code, phone_number;
 
     public String getWriter_name() {
         return writer_name;

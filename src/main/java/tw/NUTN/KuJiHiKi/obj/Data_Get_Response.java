@@ -1,7 +1,7 @@
 package tw.NUTN.KuJiHiKi.obj;
 
 public class Data_Get_Response {
-    public String name_r, stu_num_r, content_r, phone_num_r;
+    private String name_r, stu_num_r, content_r, phone_num_r;
 
     public String getContent_r() {
         return content_r;
