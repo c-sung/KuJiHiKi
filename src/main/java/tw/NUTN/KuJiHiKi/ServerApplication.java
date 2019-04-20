@@ -1,6 +1,7 @@
 package tw.NUTN.KuJiHiKi;
 
 import tw.NUTN.KuJiHiKi.api.Data_Create;
+import tw.NUTN.KuJiHiKi.api.Get_Data;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +14,7 @@ public class ServerApplication extends Application {
 		Set<Class<?>> restServiceSet = new HashSet<Class<?>>();
 
 		restServiceSet.add(Data_Create.class);
+		restServiceSet.add(Get_Data.class);
 
 		return restServiceSet;
 	}
