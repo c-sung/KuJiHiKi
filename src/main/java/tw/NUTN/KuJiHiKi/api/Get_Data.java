@@ -41,7 +41,7 @@ public class Get_Data {
 
         Data_Get_Response response = get_Data(stu_num_check);
 
-        return Response.ok().entity(GSON.toJson(response)).build();
+        return Response.ok().entity(GSON.toJson(response)).header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, Authorization, *").header("Access-Control-Allow-Methods", "POST, GET, OPTIONS").header("Access-Control-Allow-Origin", "*").build();
     }
 
     private static Data_Get_Response get_Data(String stu_num) throws IOException {

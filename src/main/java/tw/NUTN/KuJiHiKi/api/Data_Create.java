@@ -35,6 +35,7 @@ public class Data_Create {
     @Path("{stu_num}")
     @POST
     public Response Data_Create_Func(@PathParam("stu_num") String stu_num_check, String body) throws IOException, ServiceException {
+        System.out.println("POST IN");
         Data_Create_Response data_create_response = new Data_Create_Response();
         hbaseConfig.set("hbase.zookeeper.quorum", "localhost");
         table = new HTable(hbaseConfig, "kuji");
@@ -45,13 +46,13 @@ public class Data_Create {
         if(data_exist_in_hbase(stu_num_check)) {
             data_create_response.setRsp_code(DATA_ALREADY_EXIST);
             data_create_response.setRsp_msg("data already exist");
-            return Response.ok().entity(GSON.toJson(data_create_response)).build();
+            return Response.ok().entity(GSON.toJson(data_create_response)).header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, Authorization, *").header("Access-Control-Allow-Methods", "POST, GET, OPTIONS").header("Access-Control-Allow-Origin", "*").build();
         }
 
         if(!member.check_data()) {
             data_create_response.setRsp_code(DATA_NULL);
             data_create_response.setRsp_msg("Data is null");
-            return Response.ok().entity(GSON.toJson(data_create_response)).build();
+            return Response.ok().entity(GSON.toJson(data_create_response)).header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, Authorization, *").header("Access-Control-Allow-Methods", "POST, GET, OPTIONS").header("Access-Control-Allow-Origin", "*").build();
         }
 
         data_put(member);
@@ -59,7 +60,7 @@ public class Data_Create {
         data_create_response.setRsp_msg("success");
 
         System.out.println(GSON.toJson(member));
-        return Response.ok().entity(GSON.toJson(data_create_response)).build();
+        return Response.ok().entity(GSON.toJson(data_create_response)).header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, Authorization, *").header("Access-Control-Allow-Methods", "POST, GET, OPTIONS").header("Access-Control-Allow-Origin", "*").build();
     }
 
     private static boolean data_exist_in_hbase(String stuNum) throws IOException {

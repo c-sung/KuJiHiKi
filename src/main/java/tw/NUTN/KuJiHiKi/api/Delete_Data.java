@@ -53,7 +53,7 @@ public class Delete_Data {
         }
 
         System.out.println("Someone tried to delete a data");
-        return Response.ok().entity(GSON.toJson(response)).build();
+        return Response.ok().entity(GSON.toJson(response)).header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, Authorization, *").header("Access-Control-Allow-Methods", "POST, GET, OPTIONS").header("Access-Control-Allow-Origin", "*").build();
     }
 
     private static Data_to_Delete get_data(String stu_num_to_del) throws IOException {
